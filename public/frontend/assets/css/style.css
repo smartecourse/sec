@@ -1,0 +1,875 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'sans-serif', 'Poppins';
+  padding: 0;
+  margin: 0;
+  background-color: #f6f8fd;
+}
+hr{
+  border: 4px solid var(--color--blue);
+  opacity: 1;
+}
+p{
+    font-size: 16px;
+}
+:root{
+    --color--blue:#4e91f9;
+    --color--grey:#8B9CAF;
+    --color--blue--dark:#012966;
+}
+/* main{
+    box-sizing: border-box;
+    position: relative;
+    background-color: #FAFCFF;
+} */
+
+/* START NAVIGATION TOPBAR STYLE */
+.header-3-3 .modal-backdrop.show {
+  background-color: #000;
+  opacity: 0.6;
+}
+
+.header-3-3 .modal-item.collapse {
+  top: 2rem;
+}
+
+.header-3-3 .navbar{
+  padding: 2rem 2rem;
+}
+.header-3-3 .navbar.navbar-expand-lg.navbar-light.fixed-top {
+    border-bottom: 1px solid #F4F4F4 !important;
+    opacity: 1;
+
+}
+
+.header-3-3 .navbar-light .navbar-nav .nav-link {
+  font: 300 1.0rem/1.5rem Poppins, sans-serif;
+  color: var(--color--grey);
+  padding: 0rem 1.25rem 0rem 0rem;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.header-3-3 .navbar-light .navbar-nav .nav-link:hover {
+  font: 500 1.0rem/1.5rem Poppins, sans-serif;
+  color: #243142;
+}
+
+.header-3-3 .navbar-light .navbar-nav .active {
+  position: relative;
+  width: fit-content;
+}
+
+.header-3-3 .navbar-light .navbar-nav .active>.nav-link,
+.header-3-3 .navbar-light .navbar-nav .nav-link.active,
+.header-3-3 .navbar-light .navbar-nav .nav-link.show,
+.header-3-3 .navbar-light .navbar-nav .show>.nav-link {
+  font-weight: 500;
+}
+
+.header-3-3 .navbar-light .navbar-toggler-icon {
+  background-image: urlurl("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.header-3-3 .navbar.navbar-expand-lg.navbar-light.fixed-top {
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-transition: background-color 2s; /* Safari */
+    transition: background-color 2s;
+}
+
+.navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+    background-color: transparent !important;
+}
+.header-3-3 .modal-item .modal-dialog .modal-content {
+    border-radius: 8px;
+  }
+
+  .header-3-3 .responsive li {
+    padding: 1rem;
+  }
+
+  .header-3-3 .hr {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+/* END NAVIGATION TOPBAR STYLE */
+/* START NAVIGATION BOTTOM STYLE */
+.header-3-3 .navbar-dark .navbar-nav .nav-item .nav-link:hover{
+    color: var(--color--blue) !important;
+}
+/* END NAVIGATION BOTTOM STYLE */
+/* START TEXT HEADER */
+.header-3-3 .title-text-big {
+    font: 600 2.25rem / normal Poppins, sans-serif;
+    margin-bottom: 1.25rem;
+    color: #243142;
+}
+.header-3-3 .title-text-big h2{
+    font: 600 2.25rem / normal Poppins, sans-serif;
+    margin-bottom: 1.25rem;
+    color: #243142;
+  }
+.title-text-big h2{
+  font: 600 2.25rem / normal Poppins, sans-serif;
+  margin-bottom: 1.25rem;
+  color: #243142;
+}
+/* animation */
+/* .header-3-3 .sec{
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+}
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  } */
+/* END TEXT HEADER */
+
+/* START BUTTON HEADER */
+.header-3-3 .login-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+.header-3-3 .login-text strong{
+    font-size: 16px;
+    color: #34364a;
+    font-weight: 500;
+    /* padding-bottom: 0 !important; */
+}
+.header-3-3 .login-text a{
+    text-decoration: none;
+}
+.header-3-3 .btn-fill{
+    font: 500 0.875rem/1.25rem Poppins, sans-serif;
+    border: 1px solid var(--color--blue);
+    background-color: var(--color--blue);
+    padding: 0.75rem 1.5rem;
+    transition: 0.3s;
+}
+.header-3-3 .btn-fill:hover {
+    background-color: #6DA4F9;
+    border: 1px solid #6DA4F9;
+}
+.header-3-3 .btn-no-fill {
+    font: 500 0.875rem/1.25rem Poppins, sans-serif;
+    color: var(--color--grey);
+    padding: 0.75rem 2rem;
+}
+.header-3-3 .btn-no-fill:hover {
+    color: #243142;
+    font-weight: 700;
+    border-color: #243142;
+}
+.btn-fill{
+  font: 500 0.875rem/1.25rem Poppins, sans-serif;
+  border: 1px solid var(--color--blue);
+  background-color: var(--color--blue);
+  padding: 0.75rem 1.5rem;
+  transition: 0.3s;
+}
+.btn-fill:hover {
+  background-color: #6DA4F9;
+  border: 1px solid #6DA4F9;
+}
+
+/* END START BUTTON HEADER */
+.header-3-3 .py-700{
+  margin-top: 100px;
+}
+
+.header-3-3 .text-paket{
+  padding-top: 20px;
+  font-weight: 700;
+}
+/* Section Hubungin Kami */
+.pt-9 {
+  padding-top: 10rem !important;
+}
+.text-700{
+  font-weight: 700;
+  line-height: 1.4;
+}
+.flex-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.section-download{
+  margin-bottom: -10rem;
+}
+
+/* end section tampilan */
+
+/* footer */
+.bg-200{
+  background-color: #001219;
+  color: #e0fbfc;
+}
+.bg-200 li {
+  font-weight: 200;
+  font-size: 14px;
+}
+.lh-lg {
+  line-height: 2 !important;
+}
+.bg-200 a{
+  font-weight: 700;
+  text-decoration: none;
+  color: #e0fbfc;
+}
+/* end footer */
+/* Katalog Kelas  */
+.header-3-3 #kelas hr{
+    margin-top:-15px;
+}
+.header-3-3 .katalog-kelas .card .card-title{
+    font-size: 20px;
+    font-weight: 700;
+}
+.header-3-3 .katalog-kelas p{
+    color:rgb(153, 154, 164);
+}
+.header-3-3 .katalog-kelas .action{
+    color:rgb(153, 154, 164);
+}
+.header-3-3 .katalog-kelas .action:hover{
+    color:var(--color--blue);
+}
+.header-3-3 .katalog-kelas .card{
+    border: none;
+    border-radius: 20px;
+}
+.header-3-3 .katalog-kelas .katalog-semua{
+    border-radius: 20px;
+    max-height: 100%;
+
+    /* border: 1px solid red; */
+}
+.header-3-3 .katalog-kelas .card.paket-kelas{
+    background-color: var(--color--blue--dark);
+    border: none !important;
+    padding: 0 20px 0 20px !important;
+}
+.header-3-3 .katalog-kelas .card.paket-kelas .card-title{
+    padding-top: 5px;
+    font-size: 14px;
+    color: white;
+}
+.header-3-3 .card-title{
+    font-weight: 700;
+    color: #243142;
+    text-decoration: none;
+}
+/* Katalog Kelas */
+/* Pencarian kelas */
+/* .header-3-3 .katalog-kelas .search{
+    width: 100%;
+    margin-bottom: auto;
+    padding: 10px;
+    border-radius: 5px;
+} */
+/* .header-3-3 .katalog-kelas .search {
+    width: 100%;
+    margin-bottom: auto;
+    height: 70px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header-3-3 .katalog-kelas .search .search-input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    margin-top: 5px;
+    caret-color: transparent;
+    line-height: 20px;
+    transition: width 0.4s linear;
+}
+.header-3-3 .katalog-kelas .search .search-input {
+    padding: 12px 10px;
+    width: 100%;
+    caret-color: var(--color--blue);
+    font-size: 19px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+}
+
+.header-3-3 .katalog-kelas .search-icon {
+    padding: 20px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: var(--color--blue);
+    font-size: 16px;
+    bottom: 50px;
+    position: relative;
+    border-radius: 5px;
+} */
+.header-3-3 .katalog-kelas .text-harga span{
+    padding-right: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.header-3-3 .katalog-kelas .text-harga .text-muted{
+    text-decoration: line-through;
+    color: #999aa4 !important;
+}
+/* end pencarian */
+/* start pagination */
+.header-3-3 .katalog-kelas .page-item{
+    border-radius: 20px !important;
+}
+.header-3-3 .katalog-kelas .page-item .page-link{
+  z-index: 1;
+  border-radius: 5px;
+  padding: 15px;
+  border: none;
+  margin-right: 4px;
+}
+.header-3-3 .katalog-kelas .page-item.active .page-link{
+    background-color: var(--color--blue);
+    color: #fff;
+}
+.header-3-3 .katalog-kelas .page-item .page-link:hover{
+    color: #243142;
+}
+/* end pagination */
+/* start Tentang kami */
+.header-3-3 #kelas .email-card{
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(33, 37, 41);
+}
+.header-3-3 #kelas .email-card:hover{
+    color: var(--color--blue);
+}
+.header-3-3 .katalog-kelas .card .tim{
+    border-radius: 20px;
+}
+/* end tentang kami */
+/* Start Login */
+.sidenav-background{
+    height: 45%;
+    background-color: var(--color--blue);
+    overflow-x: hidden;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+}
+.form-login{
+    margin-top: 10%;
+}
+.form-login h1{
+    font-weight: 700;
+}
+.form-login label, p{
+    color: rgb(153, 154, 164);
+    font-size: 16px;
+    padding-bottom: 4px;
+}
+.form-login input{
+    border-color: rgb(153, 154, 164);
+}
+.form-login input::placeholder{
+    font-size: 14px;
+    color: #ced4da;
+
+}
+.form-login .btn-masuk{
+    font: 500 0.875rem/1.25rem Poppins, sans-serif;
+    border: 1px solid var(--color--blue);
+    background-color: var(--color--blue);
+    padding: 0.75rem 1.5rem;
+    transition: 0.3s;
+}
+.form-login .btn-masuk:hover{
+    background-color: #6DA4F9;
+    border: 1px solid #6DA4F9;
+}
+.form-login input[type=checkbox]{
+    border-color: rgb(153, 154, 164);
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.form-login .btn-google{
+    font: 500 0.875rem/1.25rem Poppins, sans-serif;
+    color: var(--color--grey);
+    padding: 0.75rem 2rem;
+    border-color: rgb(153, 154, 164);
+}
+.form-login .btn-google:hover{
+    color: #243142;
+    font-weight: 700;
+}
+.form-login .lupa-password{
+    color: var(--color--grey);
+    font-size: 14px;
+}
+.form-login .lupa-password:hover{
+    color: #243142;
+}
+.form-login .daftar-akun a{
+    color: var(--color--blue);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding-left: 4px;
+}
+.form-login .daftar-akun a:hover{
+    color: #6DA4F9;
+}
+.form-login .daftar-akun p{
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+.form-login .privasi a{
+    color: var(--color--blue);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding-left: 4px;
+}
+.form-login .privasi a:hover{
+    color: #6DA4F9;
+}
+.form-login .privasi p{
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+/* End Login */
+/* start signup */
+.form-login .btn-batal {
+    font: 500 0.875rem/1.25rem Poppins, sans-serif;
+    color: var(--color--grey);
+    border-color: var(--color--grey);
+    padding: 0.75rem 2rem;
+    margin-right: 5px;
+}
+.form-login .btn-batal:hover {
+    color: #fff;
+    border-color: red;
+    font-weight: 700;
+    background-color: red;
+}
+/* end signup */
+
+/* Start Detail Konten */
+.header-3-3 .intro-detail{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+/* .header-3-3 .intro-detail .intro{
+    color: red;
+} */
+.header-3-3 .card-detail-kategori{
+    padding: 10px 20px;
+    background-color: rgba(4, 1, 102, 0.3);
+    opacity: 2;
+}
+.header-3-3 .card-detail-kategori h1{
+    color: #012966;
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+}
+.header-3-3 .content-kelas{
+    padding: 30px;
+        /* background-color: red; */
+    background-color: #fff;
+    border-radius: 16px;
+}
+.header-3-3 .content-kelas .footer-group{
+    padding: 0;
+    margin-top: 150px;
+    margin-right: -30px;
+    margin-left: -30px;
+    margin-bottom: -30px;
+    background-color: var(--color--blue);
+    text-align: center;
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+.header-3-3 .content-kelas .footer-group .label{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    width: 100%;
+}
+.header-3-3 .content-kelas .author{
+    font-size: 16px;
+}
+.header-3-3 .content-kelas .deadline{
+    padding-left: 5px;
+}
+.header-3-3 .nav.nav-tabs .nav-item .nav-link.active{
+    background-color: var(--color--blue);
+    border: 1px solid var(--color--blue);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+}
+.header-3-3 .nav.nav-tabs{
+    border-bottom: 2px solid var(--color--blue);
+}
+.header-3-3 .tab-content .tab-pane{
+    border:1px solid #dfdfdf;
+}
+.header-3-3 .tab-content .tab-pane .list-group .list-group-item .list-materi{
+    color: #243142;
+    font-weight: 600;
+    font-size: 18px;
+}
+.header-3-3 .tab-content .tab-pane .list-group .list-group-item .list-materi-detail{
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 5px;
+}
+/* End Detail Konten */
+/* start finish */
+.finish-payment .text-finish{
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    color: #14d1a4;
+}
+.finish-payment .card-finish{
+    background-color: #fff;
+    border-left: 5px solid #14d1a4;
+}
+/* end finish */
+/* start eror */
+.finish-payment .text-eror{
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+.finish-payment .card-eror{
+    background-color: #fff; border-left: 5px solid #FF725E;
+}
+/* end eror */
+/* start unfinish */
+.finish-payment .text-unfinish{
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+.finish-payment .card-unfinish{
+    background-color: #fff; border-left: 5px solid #F5C371
+}
+
+/* end unfinish */
+@media screen and (max-width: 576px){
+    .header-3-3 .title-text-big {
+      font-size: 1rem;
+      line-height: 1.2;
+      text-align: center;
+      padding: 10px;
+    }
+    .header-3-3 .text-caption{
+        font-size: 1rem;
+        line-height: 1.8;
+        text-align: center;
+        padding: 10px;
+    }
+    .header-3-3 .responsive li{
+      padding: 0;
+    }
+    hr{
+      margin: 0 auto;
+    }
+    .header-3-3 #kelas{
+      margin-top: 50px;
+    }
+    .section-download{
+      margin-bottom: 0;
+    }
+    .header-3-3 .card-title h4{
+        text-align: center;
+    }
+    .header-3-3 .katalog-kelas .card.paket-kelas{
+        background-color: #012966;
+        color: white;
+        border: none;
+    }
+    .header-3-3 .katalog-kelas .card-title hr{
+        margin: 0 auto;
+    }
+    .header-3-3 #kelas hr{
+        margin-top:10px;
+    }
+    .form-login{
+        margin: 20px;
+    }
+    .form-login .btn-google{
+        font-size:10px;
+        text-align: center;
+    }
+    .form-login p{
+        font-size: 14px;
+    }
+    .form-login .card.p-5{
+        padding: 15px !important;
+    }
+    .header-3-3 .content-kelas{
+        padding: 30px;
+        background-color: #fff;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+  }
+@media screen and (min-width: 576px) {
+  .header-3-3 .modal-item .modal-dialog {
+    max-width: 95%;
+    border-radius: 12px;
+  }
+
+  .header-3-3 .navbar {
+    padding: 2rem;
+  }
+
+  .header-3-3 .title-text-big {
+    font-size: 3rem;
+    line-height: 1.2;
+    padding: 10px;
+  }
+
+  .header-3-3 .text-caption{
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: left;
+    padding: 10px;
+  }
+
+
+}
+
+@media screen and (min-width: 768px) {
+  .header-3-3 .navbar {
+    padding: 2rem 4rem;
+  }
+
+  .header-3-3 .hr {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+
+}
+
+@media screen and (min-width: 992px) {
+
+  .header-3-3 .navbar-light .navbar-nav .active:before {
+    content: "";
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: 0;
+    height: 0px;
+    width: 80%;
+    /* or 100px */
+    border-bottom: 2px solid var(--color--blue);
+  }
+
+  .header-3-3 .navbar {
+    padding: 2rem 6rem;
+  }
+
+  .header-3-3 .navbar-light .navbar-nav .nav-link {
+    padding: 0;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .header-3-3 .navbar-light .navbar-nav .active:before {
+    width: 40%;
+  }
+
+  .header-3-3 .hr {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+
+}
+
+@media screen and (max-width: 1023px) {
+  .header-3-3 .form div input[type="text"] {
+    width: 100%;
+  }
+}
+
+/** Custom **/
+.discount {
+  transform: rotate(45deg);
+}
+
+.box {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  height: 400px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+
+/* common */
+.ribbon {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  display: block;
+  border: 5px solid var(--color--blue);
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  padding: 15px 0;
+  background-color:  var(--color--blue);
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font: 700 16px/1 ;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* top left*/
+.ribbon-top-left {
+  top: -10px;
+  left: -10px;
+}
+.ribbon-top-left::before,
+.ribbon-top-left::after {
+  border-top-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-top-left::before {
+  top: 0;
+  right: 0;
+}
+.ribbon-top-left::after {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-top-left span {
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg);
+}
+
+/* top right*/
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+/* bottom left*/
+.ribbon-bottom-left {
+  bottom: -10px;
+  left: -10px;
+}
+.ribbon-bottom-left::before,
+.ribbon-bottom-left::after {
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+}
+.ribbon-bottom-left::before {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-bottom-left::after {
+  top: 0;
+  left: 0;
+}
+.ribbon-bottom-left span {
+  right: -25px;
+  bottom: 30px;
+  transform: rotate(225deg);
+}
+
+/* bottom right*/
+.ribbon-bottom-right {
+  bottom: -10px;
+  right: -10px;
+}
+.ribbon-bottom-right::before,
+.ribbon-bottom-right::after {
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-bottom-right::before {
+  bottom: 0;
+  left: 0;
+}
+.ribbon-bottom-right::after {
+  top: 0;
+  right: 0;
+}
+.ribbon-bottom-right span {
+  left: -25px;
+  bottom: 30px;
+  transform: rotate(-225deg);
+}
