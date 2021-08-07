@@ -41,6 +41,21 @@ class DashboardController extends Controller
             $this->param['getKelas'] = Kelas::count();
             $this->param['getTransaksiSuccess'] = Transaksi::where('status', 'disetujui')->count();
             $this->param['getTransaksiProcess'] = Transaksi::where('status', 'sedang diproses')->count();
+            $this->param['getTransaksiCanceled'] = Transaksi::where('status', 'ditolak')->count();
+            $this->param['getGrandTotal'] = Transaksi::select(\DB::raw('SUM(grand_total) AS total'))
+                                                            ->where('status', 'disetujui')
+                                                            ->first();
+            $this->param['getGrandTotalToday'] = Transaksi::select(\DB::raw('SUM(grand_total) AS total'))
+                                                            ->where('updated_at', 'LIKE', date('Y-m-d').'%')
+                                                            ->where('status', 'disetujui')
+                                                            ->first();
+            $year = date('Y');
+
+            $this->param['transaksi'] = Transaksi::select(\DB::raw('SUM(grand_total) AS total'), \DB::raw("DATE_FORMAT(updated_at, '%m') month"))
+                                                ->whereYear('updated_at', $year)
+                                                ->groupBy('month')
+                                                ->get();
+                                                            
             return view('admin.page.dashboard', $this->param);
         } else {
             // jika role adalah user atau tidak mempunyai role

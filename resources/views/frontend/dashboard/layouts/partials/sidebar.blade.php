@@ -1,7 +1,7 @@
 <div id="sidebar" class='active'>
     <div class="sidebar-wrapper active">
         <div class="sidebar-header text-center">
-            <img src="{{ Session::get('foto_profil') }}" class="" alt="" srcset="">
+            <img src="{{ Session::get('foto_profil')  != null ? asset('upload/fotoProfil/'.Session::get('foto_profil')) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }}"  class="" alt="" srcset="">
             <h3 class="text-user">{{ Session::get('nama') }}</h3>
             @if (Session::get('status') != 'regular')
                 <span class="badge bg-info">{{ Session::get('status') }}</span>

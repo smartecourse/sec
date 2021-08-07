@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-           @if ($kelas[0]->intro != null)
+           @if ($kelas[0]->tipe_kelas == 'ebook')
                 <div class="row p-4">
                     <h4 class="card-title">Intro Kelas</h4>
                     <div class="col-lg-12 intro">
@@ -96,131 +96,154 @@
                     </div>
                 </div>
            @endif
-            <div class="row p-4">
-                <div class="col-lg-12">
+            <div class="row mt-5">
+                <div class="container-fluid p-4">
                     <h4 class="card-title">Deskripsi Kelas</h4>
-                    <div class="pt-2">
+                    <div class="col-lg-12 intro">
                         {{ $kelas[0]->deskripsi }}
+                        {{-- {!! $kelas[0]->intro !!} --}}
                     </div>
                 </div>
             </div>
-            <div class="row p-4">
-                <div class="col-lg-12">
-                    <h4 class="card-title">Fasilitas Kelas</h4>
-                    <div class="pt-2">
-                        @foreach($fasilitas as $items)
-                            <div class="d-flex">
-                                <svg class="bi bi-check-circle-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2FAB73" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 class="card-title">Fasilitas Kelas</h4>
+                            @foreach($fasilitas as $items)
+                            <div class="d-flex mt-4">
+                                <svg
+                                   class="bi bi-check-circle-fill"
+                                   xmlns="http://www.w3.org/2000/svg"
+                                   width="24"
+                                   height="24"
+                                   fill="#2FAB73"
+                                   viewBox="0 0 16 16"
+                                   >
+                                   <path
+                                      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                                      ></path>
                                 </svg>
                                 <p class="ms-2">{{ $items->fasilitas }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <nav>
-                        <ul class="nav nav-tabs">
-                            @foreach ($kelas as $item)
-                            <li class="nav-item">
-                                <a class="nav-link {{ strtolower($item->tipe_kelas) == 'video' ? 'active' : '' }}" data-bs-toggle="tab" href="#{{ strtolower($item->tipe_kelas) }}">{{ ucwords($item->tipe_kelas) }}</a>
-                            </li>
                             @endforeach
-                        </ul>
-
-                        {{-- <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#video">Video</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#ebook">Ebook</a>
-                            </li>
-                        </ul> --}}
-                        
-                    </nav>
-                </div>
-            </div>
-            <div class="row">
-                <div class="tab-content">
-                    @foreach ($kelas as $item)
-                    <div class="tab-pane fade show {{ $item->tipe_kelas == 'video' ? 'active' : '' }}" id="{{ $item->tipe_kelas }}">
-                        <ul class="list-group list-group-flush">
-                            @php
-                                $konten = \App\Models\Materi::select('materi.*', 'kelas.tipe_kelas')
-                                                            ->join('kelas', 'kelas.id', 'materi.kelas_id')
-                                                            ->where('materi.kelas_id', $item->id_kelas)
-                                                            ->where('kelas.tipe_kelas', $item->tipe_kelas)
-                                                            ->get();
-                            @endphp
-                            @forelse ($konten as $kontenItem)
-                                @php
-                                    $materikonten = \App\Models\MateriKonten::where('materi_id', $kontenItem->id)
-                                                                            ->orderBy('urutan')
-                                                                            ->get();
-                                @endphp
-                                <li class="list-group-item">
-                                    <p class="list-materi p-0 m-0">{{ $kontenItem->nama_materi }}</p>
-                                        <ul class="list-group list-group-flush">
-                                            @foreach ($materikonten as $materiItem)
-                                            <li class="list-group-item">
-                                                <div class="d-flex">
-                                                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.2688 6.71384H12.7312C15.0886 6.71384 17 8.58304 17 10.8885V15.8253C17 18.1308 15.0886 20 12.7312 20H4.2688C1.91136 20 0 18.1308 0 15.8253V10.8885C0 8.58304 1.91136 6.71384 4.2688 6.71384ZM8.49492 15.3295C8.99283 15.3295 9.38912 14.9419 9.38912 14.455V12.2489C9.38912 11.7719 8.99283 11.3844 8.49492 11.3844C8.00717 11.3844 7.61088 11.7719 7.61088 12.2489V14.455C7.61088 14.9419 8.00717 15.3295 8.49492 15.3295Z" fill="#012966"/>
-                                                    <path opacity="0.4" d="M14.023 5.39595V6.86667C13.6673 6.7673 13.2913 6.71761 12.9052 6.71761H12.2447V5.39595C12.2447 3.37868 10.5681 1.73903 8.50533 1.73903C6.44257 1.73903 4.76594 3.36874 4.75578 5.37608V6.71761H4.10545C3.70916 6.71761 3.33319 6.7673 2.97754 6.87661V5.39595C2.9877 2.41476 5.45692 0 8.48501 0C11.5537 0 14.023 2.41476 14.023 5.39595" fill="#012966"/>
-                                                    </svg>
-                                                    <p class="list-materi-detail">{{ $materiItem->judul_konten_materi }}</p>
-                                                </div>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                </li>
-                            @empty
-                            <p class="m-4">Belum ada materi.</p>
-                            @endforelse
-                        </ul>
+                        </div>
                     </div>
-                    @endforeach
-                    {{-- <div class="tab-pane fade show {{ $kelas->tipe_kelas == 'ebook' ? 'active' : '' }}" id="ebook" >
-                        <ul class="list-group list-group-flush">
-                            @php
-                                $ebook = \App\Models\Materi::select('materi.*', 'kelas.tipe_kelas')
-                                                            ->join('kelas', 'kelas.id', 'materi.kelas_id')
-                                                            ->where('kelas_id', $kelas->id_kelas)
-                                                            ->where('kelas.tipe_kelas', 'ebook')
-                                                            ->get();
-                                                            echo $ebook;
-                            @endphp
-                            @forelse ($ebook as $item)
-                                @php
-                                    $ebookkonten = \App\Models\MateriKonten::where('materi_id', $item->id)
-                                                                            ->orderBy('urutan')
-                                                                            ->get();
-                                @endphp
-                                <li class="list-group-item">
-                                    <p class="list-materi p-0 m-0">{{ $item->nama_materi }}</p>
-                                        <ul class="list-group list-group-flush">
-                                            @foreach ($ebookkonten as $ebookItem)
-                                            <li class="list-group-item">
-                                                <div class="d-flex">
-                                                    <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.2688 6.71384H12.7312C15.0886 6.71384 17 8.58304 17 10.8885V15.8253C17 18.1308 15.0886 20 12.7312 20H4.2688C1.91136 20 0 18.1308 0 15.8253V10.8885C0 8.58304 1.91136 6.71384 4.2688 6.71384ZM8.49492 15.3295C8.99283 15.3295 9.38912 14.9419 9.38912 14.455V12.2489C9.38912 11.7719 8.99283 11.3844 8.49492 11.3844C8.00717 11.3844 7.61088 11.7719 7.61088 12.2489V14.455C7.61088 14.9419 8.00717 15.3295 8.49492 15.3295Z" fill="#012966"/>
-                                                    <path opacity="0.4" d="M14.023 5.39595V6.86667C13.6673 6.7673 13.2913 6.71761 12.9052 6.71761H12.2447V5.39595C12.2447 3.37868 10.5681 1.73903 8.50533 1.73903C6.44257 1.73903 4.76594 3.36874 4.75578 5.37608V6.71761H4.10545C3.70916 6.71761 3.33319 6.7673 2.97754 6.87661V5.39595C2.9877 2.41476 5.45692 0 8.48501 0C11.5537 0 14.023 2.41476 14.023 5.39595" fill="#012966"/>
-                                                    </svg>
-                                                    <p class="list-materi-detail">{{ $ebookItem->judul_konten_materi }}</p>
-                                                </div>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                </li>
-                            @empty
-                            <p class="m-4">Belum ada materi.</p>
-                            @endforelse
-                        </ul>
-                    </div> --}}
                 </div>
             </div>
-        {{-- </div> --}}
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-lg-12">
+                        <nav>
+                            <ul class="nav nav-tabs">
+                                @foreach ($kelas as $item)
+                                <li class="nav-item">
+                                    <a class="nav-link {{ strtolower($item->tipe_kelas) == 'video' ? 'active' : '' }}" data-bs-toggle="tab" href="#{{ strtolower($item->tipe_kelas) }}">{{ ucwords($item->tipe_kelas) }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+            <div class="row">
+                    <div class="tab-content">
+                        @foreach ($kelas as $item)
+                        <div class="tab-pane fade show {{ $item->tipe_kelas == 'video' ? 'active' : '' }}" id="{{ $item->tipe_kelas }}">
+                            <ul class="list-group list-group-flush">
+                                @php
+                                    $konten = \App\Models\Materi::select('materi.*', 'kelas.tipe_kelas')
+                                                                ->join('kelas', 'kelas.id', 'materi.kelas_id')
+                                                                ->where('materi.kelas_id', $item->id_kelas)
+                                                                ->where('kelas.tipe_kelas', $item->tipe_kelas)
+                                                                ->get();
+                                @endphp
+                                @forelse ($konten as $kontenItem)
+                                    @php
+                                        $materikonten = \App\Models\MateriKonten::where('materi_id', $kontenItem->id)
+                                                                                ->orderBy('urutan')
+                                                                                ->get();
+                                    @endphp
+                                    <li class="list-group-item">
+                                        <p class="list-materi p-0 m-0">{{ $kontenItem->nama_materi }}</p>
+                                            <ul class="list-group list-group-flush">
+                                                @foreach ($materikonten as $materiItem)
+                                                <li class="list-group-item">
+                                                    <div class="d-flex">
+                                                        <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.2688 6.71384H12.7312C15.0886 6.71384 17 8.58304 17 10.8885V15.8253C17 18.1308 15.0886 20 12.7312 20H4.2688C1.91136 20 0 18.1308 0 15.8253V10.8885C0 8.58304 1.91136 6.71384 4.2688 6.71384ZM8.49492 15.3295C8.99283 15.3295 9.38912 14.9419 9.38912 14.455V12.2489C9.38912 11.7719 8.99283 11.3844 8.49492 11.3844C8.00717 11.3844 7.61088 11.7719 7.61088 12.2489V14.455C7.61088 14.9419 8.00717 15.3295 8.49492 15.3295Z" fill="#012966"/>
+                                                        <path opacity="0.4" d="M14.023 5.39595V6.86667C13.6673 6.7673 13.2913 6.71761 12.9052 6.71761H12.2447V5.39595C12.2447 3.37868 10.5681 1.73903 8.50533 1.73903C6.44257 1.73903 4.76594 3.36874 4.75578 5.37608V6.71761H4.10545C3.70916 6.71761 3.33319 6.7673 2.97754 6.87661V5.39595C2.9877 2.41476 5.45692 0 8.48501 0C11.5537 0 14.023 2.41476 14.023 5.39595" fill="#012966"/>
+                                                        </svg>
+                                                        <p class="list-materi-detail">{{ $materiItem->judul_konten_materi }}</p>
+                                                    </div>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                    </li>
+                                @empty
+                                <p class="m-4">Belum ada materi.</p>
+                                @endforelse
+                            </ul>
+                        </div>
+                        @endforeach
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row pt-4">
+                    <h4 class="card-title p-2">Ulasan Pengguna</h4>
+                    <div class="col-lg-12 intro">
+                        <div class="content-kelas h-100 bg-primary" style="background-color: #fff !important; margin: 0 auto;">
+                            <div class="review-kelas p-2">
+                                <div class="row">
+                                    @forelse ($review as $reviewKelas)
+                                        <div class="mb-4">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-12 d-flex justify-content-center">
+                                                    <div>
+                                                        <img src=" {{ $reviewKelas->foto_profil != null ? asset('upload/fotoProfil/'.$reviewKelas->foto_profil) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid rounded" alt="User Akun" > 
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-9 col-md-12">
+                                                    <h4 class="card-title p-0 m-0">{{ $reviewKelas->nama }}</h4>
+                                                    <div class="d-flex justify-content-start mt-2" >
+                                                        <div class="" style="margin-right: 10px !important">
+                                                            <div class="d-flex justify-content-start">
+                                                                <div class="star-review">
+                                                                    @php
+                                                                        $limit = 5;
+                                                                    @endphp
+                                                                    @for ($i = 1; $i <= $reviewKelas->rating; $i++)
+                                                                        <span class="fa fa-star text-warning"></span>
+                                                                        @php
+                                                                            $limit--;
+                                                                        @endphp
+                                                                    @endfor
+                                                                    @for ($i = 1; $i <= $limit; $i++)
+                                                                        <span class="fa fa-star text-secondary"></span>
+                                                                    @endfor                                                
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="">
+                                                            <span class="text-secondary text-muted">{{ date('D, d-M-Y H:m:s', strtotime($reviewKelas->created_at)) }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="pt-4">{{ $reviewKelas->review }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-4">
+                                            <hr class="" style="border: 1px solid #dee2e6">
+                                        </div>
+                                    @empty
+                                        
+                                    @endforelse
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 @endsection

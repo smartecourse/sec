@@ -29,7 +29,11 @@
                     </div>
                     <div style="margin-right: 10px !important;">
                         {{-- {{ Session::get('is_google') }} --}}
-                            <img src=" {{ asset(Session::get('foto_profil')) }} " class="img-fluid login-img" alt="">
+                          @if (Session::get('is_google') == 1 )
+                            <img src=" {{ Session::get('foto_profil') != null ? Session::get('foto_profil') : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+                          @else
+                            <img src=" {{ Session::get('foto_profil') != null ? asset('upload/fotoProfil/'.Session::get('foto_profil')) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+                          @endif
                         </a>
                     </div>
                     {{-- <form action="{{ url('user-logout') }}" method="post">
@@ -98,8 +102,11 @@
                                 <strong class="">Hallo, {{ Session::get('nama') }}</strong>
                         </div>
                         <div style="margin-right: 10px !important;">
-                            {{-- {{ Session::get('is_google') }} --}}
-                                <img src=" {{ asset(Session::get('foto_profil')) }} " class="img-fluid login-img" alt="">
+                              @if (Session::get('is_google') == 1 )
+                                <img src=" {{ Session::get('foto_profil') != null ? Session::get('foto_profil') : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+                              @else
+                                <img src=" {{ Session::get('foto_profil') != null ? asset('upload/fotoProfil/'.Session::get('foto_profil')) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+                              @endif
                             </a>
                         </div>
                         {{-- <form action="{{ url('user-logout') }}" method="post">

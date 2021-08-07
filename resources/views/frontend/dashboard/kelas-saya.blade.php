@@ -82,7 +82,7 @@
                                             <div class="progress-bar progress-label" role="progressbar" style="width: {{ $progress }}%"  aria-valuenow="{{ $progress }}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <a href="{{ url($item->tipe_kelas == 'video' ? 'dashboard/detail-kelas-aktif-video/'.$item->slug : 'dashboard/detail-kelas-aktif-ebook/'.$item->slug) }}">
-                                            <button class="btn btn-primary block">Lanjutkan Belajar</button>
+                                        <button class="btn btn-primary block">{{ $progress == 100 ? 'Lihat kelas' : 'Lanjutkan belajar' }}</button>
                                         </a>
                                     </div>
                                 </div>
@@ -108,7 +108,11 @@
 <div id="sidebar" class='active'>
     <div class="sidebar-wrapper active">
         <div class="sidebar-header text-center">
-            <img src="{{ asset(Session::get('foto_profil')) }}" class="" alt="" srcset="">
+            @if (Session::get('is_google') == 1 )
+                <img src=" {{ Session::get('foto_profil') != null ? Session::get('foto_profil') : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+            @else
+                <img src=" {{ Session::get('foto_profil') != null ? asset('upload/fotoProfil/'.Session::get('foto_profil')) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+            @endif
             <h3 class="text-user">{{ Session::get('nama') }}</h3>
             <span class="badge {{ Session::get('status_member') == 'private' ? 'bg-warning' : 'bg-info'}}">{{ strtoupper(Session::get('status_member')) }}</span>
         </div>

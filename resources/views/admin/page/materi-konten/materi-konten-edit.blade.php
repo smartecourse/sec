@@ -94,7 +94,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="konten" class="ml-1">Konten (Link Video) :</label>
+                                            <label for="konten" class="ml-1">Konten Video (untuk kelas video) :</label>
                                             <input type="text" class="form-control  @error('konten') is-invalid @enderror" name="konten" placeholder="ex : https://www.youtube.com/watch?v=SDROba_M42g" value="{{$getKontenMateri->konten}}" autocomplete="off">
                                             @error('konten')
                                                 <div class="invalid-feedback">
@@ -103,7 +103,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="deskripsi" class="ml-1">Deskripsi :</label>
+                                            <label for="deskripsi" class="ml-1">Konten Ebook (untuk kelas ebook) :</label>
                                             <textarea name="deskripsi" id="deskripsi" rows="3" class="form-control">{!! $getKontenMateri->deskripsi !!}</textarea>
                                             @error('deskripsi')
                                                 <p class="text-danger">{{$message}}</p>

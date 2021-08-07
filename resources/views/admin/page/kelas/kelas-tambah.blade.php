@@ -79,7 +79,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="intro" class="ml-1">Intro (opsional):</label>
+                    <label for="intro" class="ml-1">Intro (untuk kelas ebook):</label>
                     <textarea name="intro" id="intro">{{ old('intro') }}</textarea>
                     @error('intro')
                         <p class="text-danger">{{ $message }}</p>

@@ -21,7 +21,6 @@ class EditProfilController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'no_hp' => 'required'
         ],
         [
             'required' => ':attribute tidak boleh kosong.'
@@ -29,22 +28,37 @@ class EditProfilController extends Controller
         [
             'name' => 'Nama lengkap',
             'email' => 'Email',
-            'no_hp' => 'Nomor Handphone'
         ]);
-        // $data = "Data";
-        // if ($request->password == null) {
-        //   return $data;
-        // }else{
-        //     echo "data adata";
-        // }
-        $editprofil = User::find($id);
-        $editprofil->nama=$request->get('name');
-        $editprofil->phone=$request->get('no_hp');
-        $editprofil->email=$request->get('email');
 
-        if($request->file('foto') != null) {
-            if(file_exists(Session::get('foto_profil'))){
-                if(\File::delete(Session::get('foto_profil'))){
+        try {
+            $editprofil = User::find($id);
+            $editprofil->nama=$request->get('name');
+            $editprofil->phone=$request->get('no_hp');
+            $editprofil->email=$request->get('email');
+            $editprofil->tentang_saya = $request->get('bio');
+
+            if($request->file('foto') != null) {
+                if(file_exists(Session::get('foto_profil'))){
+                    if(\File::delete(Session::get('foto_profil'))){
+                        $random = \Str::random(5);
+                        $folder = 'upload/fotoProfil';
+                        $file = $request->file('foto');
+                        $filename = date('H-i-s').$random.$file->getClientOriginalName();
+                        // Get canonicalized absolute pathname
+                        $path = realpath($folder);
+
+                        // If it exist, check if it's a directory
+                        if(!($path !== true AND is_dir($path)))
+                        {
+                            // Path/folder does not exist then create a new folder
+                            mkdir($folder, 0755, true);
+                        }
+                        if($file->move($folder, $filename)) {
+                            $editprofil->foto_profil = $folder.'/'.$filename;
+                        }
+                    }
+                }
+                else {
                     $random = \Str::random(5);
                     $folder = 'upload/fotoProfil';
                     $file = $request->file('foto');
@@ -63,31 +77,21 @@ class EditProfilController extends Controller
                     }
                 }
             }
-            else {
-                $random = \Str::random(5);
-                $folder = 'upload/fotoProfil';
-                $file = $request->file('foto');
-                $filename = date('H-i-s').$random.$file->getClientOriginalName();
-                // Get canonicalized absolute pathname
-                $path = realpath($folder);
 
-                // If it exist, check if it's a directory
-                if(!($path !== true AND is_dir($path)))
-                {
-                    // Path/folder does not exist then create a new folder
-                    mkdir($folder, 0755, true);
-                }
-                if($file->move($folder, $filename)) {
-                    $editprofil->foto_profil = $folder.'/'.$filename;
-                }
-            }
+            $editprofil->save();
+            Session::put('nama', $editprofil->nama);
+            Session::put('foto_profil', $editprofil->foto_profil);
+            Session::put('profil_saya',$editprofil->tentang_saya);
+
+            return back()->withStatus('Data berhasil di Edit');
+        }
+        catch(\Exception $e) {
+            return back()->withError($e->getMessage());
+        }
+        catch(\Illuminate\Database\QueryException $e) {
+            return back()->withError($e->getMessage());
         }
 
-        $editprofil->save();
-        Session::put('nama', $editprofil->nama);
-        Session::put('foto_profil', $editprofil->foto_profil);
-
-        return redirect('/dashboard')->with('success','Data berhasil di Edit');
     }
 
     public function edit($id)

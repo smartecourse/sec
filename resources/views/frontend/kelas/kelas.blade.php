@@ -10,12 +10,22 @@
 <div class="katalog-kelas py-5 mb-5">
     <div class="container-lg">
         <div class="row d-flex justify-content-center">
+            @foreach ($jenis as $item)
             <div class="col-lg-4 col-md-12">
                 <div class="card shadow-sm bg-body p-5 mb-5 mx-auto">
                     <div class=""><img class="img-fluid" src="{{ asset('frontend/assets/icon/regular-icon.png') }}" alt="" />
                     </div>
+                    <h2 class="card-title pt-4">{{ ucwords($item->nama_jenis_kelas) }}</h2>
+                    <p>{{ $item->deskripsi }}</p>
+                </div>
+            </div>
+            @endforeach
+            {{-- <div class="col-lg-4 col-md-12">
+                <div class="card shadow-sm bg-body p-5 mb-5 mx-auto">
+                    <div class=""><img class="img-fluid" src="{{ asset('frontend/assets/icon/regular-icon.png') }}" alt="" />
+                    </div>
                     <h2 class="card-title pt-4">Regular</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sunt perferendis molestiae deleniti autem odit nobis. Obcaecati sed nesciunt,</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sunt perferendis molestiae deleniti autem odit nobis. Obcaecati sed nesciunt,</p> --}}
                     {{-- <div class="d-flex justify-content-end">
                         <a href="" class="action">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
@@ -23,14 +33,14 @@
                             </svg>
                         </a>
                     </div> --}}
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
+                {{-- </div>
+            </div> --}}
+            {{-- <div class="col-lg-4 col-md-12">
                 <div class="card shadow-sm bg-body p-5 mb-5 mx-auto" style="border: none">
                     <div class=""><img class="img-fluid" src="{{ asset('frontend/assets/icon/private-icon.png') }}" alt="" />
                     </div>
                     <h2 class="card-title pt-4">Private</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sunt perferendis molestiae deleniti autem odit nobis. Obcaecati sed nesciunt,</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum sunt perferendis molestiae deleniti autem odit nobis. Obcaecati sed nesciunt,</p> --}}
                     {{-- <div class="d-flex justify-content-end">
                         <a href="" class="action">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
@@ -38,8 +48,8 @@
                             </svg>
                         </a>
                     </div> --}}
-                </div>
-            </div>
+                {{-- </div>
+            </div> --}}
         </div>
         <div class="row mt-5">
             <div class="col-lg-12 col-md-6 ms-2 mb-4">
@@ -61,8 +71,9 @@
                     <a href="{{ url('detail-kelas/'.$items->slug) }}" class="card-title">
                         <div class="position-relative">
                             <img src=" {{ $items->cover != null ? asset( $items->cover) : ' <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Image cap" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>'}}" class="img-fluid katalog-semua" alt="">
-                            <span class="position-absolute top-50 start-50 translate-middle badge bg-primary " style="font-size: 12px; opacity: 0.6;">{{ $items->nama_jenis_kelas }}</span>
+                            {{-- <span class="position-absolute top-50 start-50 translate-middle badge bg-primary " style="font-size: 12px; opacity: 0.6;">{{ $items->nama_jenis_kelas }}</span> --}}
                             <h2 class="card-title mt-3">{{ ucwords($items->nama_paket) }}</h2>
+                            <span class="badge bg-secondary">{{ $items->nama_jenis_kelas }}</span>
                         </div>
                     </a>
                     <div class="text-harga">

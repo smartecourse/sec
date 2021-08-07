@@ -86,8 +86,13 @@
                            <div class="col-12">
                               <div class="form-group">
                                  <label for="password-vertical">Bio</label>
-                                 <textarea type="" id="contact-info-vertical" class="form-control" name="bio"
+                                 <textarea id="contact-info-vertical" class="form-control @error('bio') is-invalid @enderror" autofocus name="bio"
                                     placeholder="Bio">{{ $profil->tentang_saya }}</textarea>
+                                @if ($errors->has('bio'))
+                                <div class="invalid-feedback">
+                                {{ $errors->first('bio') }}
+                                </div>
+                                @endif
                               </div>
                               <div class="col-12 d-flex justify-content-end">
                                  <button type="submit" class="btn btn-primary mr-1 mb-1">Submit</button>
@@ -108,7 +113,11 @@
 <div id="sidebar" class='active'>
     <div class="sidebar-wrapper active">
         <div class="sidebar-header text-center">
-            <img src="{{ asset(Session::get('foto_profil')) }}" class="" alt="" srcset="">
+            @if (Session::get('is_google') == 1 )
+                <img src=" {{ Session::get('foto_profil') != null ? Session::get('foto_profil') : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+            @else
+                <img src=" {{ Session::get('foto_profil') != null ? asset('upload/fotoProfil/'.Session::get('foto_profil')) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+            @endif
             <h3 class="text-user">{{ Session::get('nama') }}</h3>
             <span class="badge {{ Session::get('status_member') == 'private' ? 'bg-warning' : 'bg-info'}}">{{ strtoupper(Session::get('status_member')) }}</span>
         </div>

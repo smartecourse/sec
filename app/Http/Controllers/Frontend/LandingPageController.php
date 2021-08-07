@@ -13,6 +13,7 @@ use App\Models\Materi;
 use App\Models\MateriKonten;
 use App\Models\Transaksi;
 use App\Models\User;
+use App\Models\ReviewKelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -55,6 +56,8 @@ class LandingPageController extends Controller
 
         $this->param['fasilitas'] = Fasilitas::join('kelas_jenis', 'kelas_jenis.id', 'fasilitas_kelas.id_paket')->get();
 
+        $this->param['jenis'] = JenisKelas::select('nama_jenis_kelas', 'deskripsi')->orderBy('bobot', 'DESC')->get();
+
         // return $this->param['fasilitas'];
 
         return view('frontend.kelas.kelas',$this->param);
@@ -76,7 +79,16 @@ class LandingPageController extends Controller
                                      ->orderBy('kelas.tipe_kelas', 'DESC')
                                      ->get();
                                     //  return $this->param['kelas'];
-        // return $this->param['kelas'];
+
+        $this->param['review'] = ReviewKelas::select('review_kelas.*',
+                                                    'kelas.id AS id_kelas','kelas.paket_id',
+                                                    'users.id AS id_users','users.nama', 'users.foto_profil')
+                                                ->join('users','users.id', 'review_kelas.id_user')
+                                                ->join('kelas','kelas.id','review_kelas.id_kelas')
+                                              ->where('kelas.paket_id', $idPaket)
+                                              ->orderBy('review_kelas.created_at', 'DESC')
+                                              ->get();
+        // return $this->param['review'];
         return view('frontend.kelas.detail-kelas', $this->param);
     }
     public function checkout($slug)
@@ -115,7 +127,7 @@ class LandingPageController extends Controller
         try {
             $currentTransaction = Transaksi::where('user_id', Session::get('id_user'))
                                             ->where('paket_id', $id)
-                                            ->where('is_active', 'active')
+                                            // ->where('is_active', 'active')
                                             ->count();
 
             if($currentTransaction > 0) {
@@ -145,6 +157,7 @@ class LandingPageController extends Controller
                     $kodeTransaksi = "INV".$date."0001";
                 }
                 /* END Generate Transaction Code */
+                // return $kodeTransaksi;  
                 $newTransaksi = new Transaksi;
                 $newTransaksi->kode_transaksi = $kodeTransaksi;
                 $newTransaksi->user_id = Session::get('id_user');
@@ -163,7 +176,9 @@ class LandingPageController extends Controller
                 $deadline = date('Y-m-d', strtotime("+$paket->deadline days", strtotime($date)));
                 $newTransaksi->tanggal_deadline = $deadline;
                 $newTransaksi->status = 'sedang diproses';
+                //$newTransaksi->status = 'disetujui';
                 $newTransaksi->is_active = 'deactive';
+                //$newTransaksi->is_active = 'active';
                 $newTransaksi->save();
 
                 if($newTransaksi->save()) {

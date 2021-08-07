@@ -58,8 +58,10 @@ class AuthController extends Controller
                             Session::put('id_user', $user->id);
                             Session::put('nama', $user->nama);
                             Session::put('is_google', $user->is_google);
+                            Session::put('is_active', $user->is_active);
                             Session::put('foto_profil', $user->foto_profil);
                             Session::put('status_member', $user->status_member);
+                            Session::put('profil_saya',$user->tentang_saya);
                             // return view('frontend.landing-page');
                             return redirect('/');
                         }   

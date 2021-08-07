@@ -26,7 +26,7 @@
 <link rel="stylesheet" href=" {{ asset('frontend/assets/dist/css/animations.css') }} ">
 {{-- FontAwesome --}}
 <link rel="stylesheet" href=" {{ asset('frontend/assets/font-awesome-4.7.0/css/font-awesome.min.css') }} ">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="{{ asset('frontend/assets/plyr.css') }}" />
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/dark-mode.css') }}">
 

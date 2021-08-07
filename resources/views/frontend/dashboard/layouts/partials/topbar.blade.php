@@ -10,7 +10,11 @@
                 <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                     <div class="d-none d-md-block d-lg-inline-block">Hi, {{ Session::get('nama') }}</div>
                     <div class="avatar mr-1">
-                    <img src="{{ asset( Session::get('foto_profil')) }}" alt="" srcset="">
+                        @if (Session::get('is_google') == 1 )
+                            <img src=" {{ Session::get('foto_profil') != null ? Session::get('foto_profil') : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+                        @else
+                            <img src=" {{ Session::get('foto_profil') != null ? asset('upload/fotoProfil/'.Session::get('foto_profil')) : 'https://ui-avatars.com/api/?format=svg&size=220&length=2' }} " class="img-fluid login-img" alt="">
+                        @endif
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
