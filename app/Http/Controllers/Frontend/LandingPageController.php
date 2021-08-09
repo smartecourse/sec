@@ -127,7 +127,7 @@ class LandingPageController extends Controller
         try {
             $currentTransaction = Transaksi::where('user_id', Session::get('id_user'))
                                             ->where('paket_id', $id)
-                                            // ->where('is_active', 'active')
+                                            ->where('is_active', 'active')
                                             ->count();
 
             if($currentTransaction > 0) {
@@ -144,7 +144,7 @@ class LandingPageController extends Controller
                 /* Generate Transaction Code */
                 // Format Kode INV202106260001
                 $kodeTransaksi = null;
-                $transaksi = Transaksi::orderBy('kode_transaksi', 'DESC')->get();
+                $transaksi = Transaksi::orderBy('created_at', 'DESC')->get();
                 if($transaksi->count() > 0) {
                     $kodeTransaksi = $transaksi[0]->kode_transaksi;
 
@@ -157,7 +157,6 @@ class LandingPageController extends Controller
                     $kodeTransaksi = "INV".$date."0001";
                 }
                 /* END Generate Transaction Code */
-                // return $kodeTransaksi;  
                 $newTransaksi = new Transaksi;
                 $newTransaksi->kode_transaksi = $kodeTransaksi;
                 $newTransaksi->user_id = Session::get('id_user');

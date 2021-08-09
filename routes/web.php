@@ -112,7 +112,7 @@ Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('ver
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend'); */
 
 Route::prefix('pembayaran')->group(function () {
-    Route::post('notif', 'PembayaranController@notif')->name('pembayaran-notif');
+    Route::post('notif', 'PembayaranController@notif');
     Route::get('finish', 'PembayaranController@finish')->name('pembayaran-finish');
     Route::get('unfinish', 'PembayaranController@unfinish')->name('pembayaran-unfinish');
     Route::get('error', 'PembayaranController@error')->name('pembayaran-error');

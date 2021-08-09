@@ -26,7 +26,7 @@
           <p>Silahkan mendaftar gratis untuk melanjutkan kursus.</p>
           @if (session('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Terdapat Kesalahan!</strong> {{ session('error') }} .
+                <strong>Terdapat Kesalahan!</strong> {{ session('error') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           @endif
